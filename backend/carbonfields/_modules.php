@@ -18,7 +18,13 @@ Container::make('post_meta', 'Module')
                 Field::make("textarea", "subline", "Subline"),
                 Field::make("image", "image", "Bild")->set_required(),
             ])
-            // -> overview_projects
+            //->hero_default
+            ->add_fields('hero_default', 'Hero Standard', [
+                Field::make('text', 'title', 'Titel')->set_required(),
+                Field::make('textarea', 'subline', 'Subline')->set_required(),
+            ])
+            
+                // -> overview_projects
             ->add_fields('overview_projects', 'Übersicht Projekte', [
                 Field::make("text", "title", "Titel")->set_required(),
                 Field::make("association", "selection", "Auswahl Projekte")
