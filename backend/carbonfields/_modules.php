@@ -21,7 +21,7 @@ Container::make('post_meta', 'Module')
             // ->hero_default
             ->add_fields('hero_default', 'Hero Standard', [
                 Field::make('text', 'title', 'Titel')->set_required(),
-                Field::make('textarea', 'subline', 'Subline')->set_required(),
+                Field::make('textarea', 'subline', 'Subline'),
             ])
             // -> text
             ->add_fields('text', 'Text', [

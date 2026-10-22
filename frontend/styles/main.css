@@ -14,9 +14,14 @@
 }
 
 /* Styling of all available layout components. */
-[data-layout="header"] {
-    padding: var(--gap-around);
-    background-color: var(--color-accent);
+/* ==============================
+   HEADER
+   ============================== */
+   [data-layout="header"] {
+    padding: 0 2.2%;
+    min-height: 180px;
+    box-sizing: border-box;
+    background-color: #FFFBEB;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -24,21 +29,74 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    .nav-container{
-        .nav{
+    gap: 32px;
+    /* Logo-Link */
+    .site-logo {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+    
+        .logo {
+            display: block;
+            width: auto;
+            max-width: 80px;
+            max-height: 65px;
+            object-fit: contain;
+        }
+    }
+    /* Navigation */
+    .site-navigation {
+        .nav {
             list-style: none;
+            margin: 0;
+            padding: 0;
+
             display: flex;
             flex-direction: row;
             justify-content: flex-end;
-            align-self: center;
-            gap: 20px;
-            a{
+            align-items: center;
+            gap: clamp(24px, 3vw, 60px);
+        }
+        /* Einzelne Menüpunkte */
+        .nav-item {
+            a {
+                display: inline-flex;
+                align-items: baseline;
+                gap: 8px;
+                font-family: "Anaheim", sans-serif;
+                font-size: 28px;
+                font-weight: 400;
+                line-height: 1.3;
+                color: #000000;
                 text-decoration: none;
-                color: var(--color-white);
+                white-space: nowrap;
+                transition: color 0.2s ease;
+                &:hover,
+                &:focus-visible {
+                    color: #999F59;
+                }
+            }
+            /* Nummerierung 01, 02, 03 ... */
+            .nav-number {
+                color: #999F59;
+                font-weight: 700;
+            }
+            /* Name des Menüpunktes */
+            .nav-title {
+                color: inherit;
             }
         }
     }
+
+    /* Tastaturfokus für das Logo */
+    .site-logo:focus-visible {
+        outline: 2px solid #3A3F27;
+        outline-offset: 5px;
+    }
 }
+
+
+
 [data-layout="footer"] {
     padding: var(--gap-around);
     background-color: var(--color-accent);
