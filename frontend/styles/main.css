@@ -87,7 +87,6 @@
             }
         }
     }
-
     /* Tastaturfokus für das Logo */
     .site-logo:focus-visible {
         outline: 2px solid #3A3F27;
@@ -96,35 +95,125 @@
 }
 
 
-
+/* ==============================
+   FOOTER
+   ============================== */
 [data-layout="footer"] {
-    padding: var(--gap-around);
-    background-color: var(--color-accent);
-    .nav-container{
-        .nav{
-            list-style: none;
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            align-self: center;
-            gap: 20px;
-            a{
-                text-decoration: none;
-                color: var(--color-white);
+    box-sizing: border-box;
+    width: 100%;
+    padding: 40px 2.2%;
+    background-color: #FFFBEB;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    /* Logo links */
+    .footer-logo {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        img {
+            display: block;
+            width: 85px;
+            height: auto;
+            max-height: 65px;
+            object-fit: contain;
+        }
+    }
+    /* Inhalt rechts */
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 16px;
+        text-align: right;
+    }
+    .footer-copyright {
+        margin: 0;
+        font-family: "Anaheim", sans-serif;
+        font-size: 18px;
+        color: #000000;
+    }
+    /* LinkedIn und E-Mail */
+    .footer-socials {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 18px;
+        a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #3A3F27;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            &:hover,
+            &:focus-visible {
+                color: #999F59;
+            }
+            img {
+                display: block;
+                width: 28px;
+                height: 28px;
+                object-fit: contain;
             }
         }
     }
-    .socials {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-self: center;
-        gap: 20px;
-        a {
-            text-decoration: none;
+    /* Datenschutz und Impressum */
+    .footer-navigation {
+        .footer-nav {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+            margin: 0;
+            padding: 0;
+            a {
+                font-family: "Anaheim", sans-serif;
+                font-size: 16px;
+                color: #000000;
+                text-decoration: none;
+                transition: color 0.2s ease;
+                &:hover,
+                &:focus-visible {
+                    color: #999F59;
+                }
+            }
+        }
+    }
+    .footer-logo:focus-visible {
+        outline: 2px solid #3A3F27;
+        outline-offset: 5px;
+    }
+}
+/* Mobile Darstellung */
+@media (max-width: 600px) {
+    [data-layout="footer"] {
+        align-items: flex-start;
+        gap: 24px;
+        padding: 32px 5%;
+        .footer-content {
+            gap: 14px;
+        }
+        .footer-logo img {
+            width: 65px;
+            max-height: 50px;
+        }
+        .footer-copyright {
+            font-size: 16px;
+        }
+        .footer-socials {
+            gap: 14px;
+        }
+        .footer-navigation .footer-nav a {
+            font-size: 15px;
         }
     }
 }
+
 
 /* Styling of all available page components. */
 [data-page] {
