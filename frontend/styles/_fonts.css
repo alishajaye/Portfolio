@@ -7,3 +7,27 @@
     font-display: swap;
     src: url('../assets/fonts/filename.woff2') format('woff2');
 }*/
+
+@font-face {
+    font-family: "Anaheim";
+    src: url("../assets/fonts/anaheim-v17-latin/anaheim-v17-latin-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Anaheim";
+    src: url("../assets/fonts/anaheim-v17-latin/anaheim-v17-latin-800.woff2") format("woff2");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Just Another Hand";
+    src: url("../assets/fonts/just-another-hand-v21-latin-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }

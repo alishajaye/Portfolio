@@ -94,7 +94,6 @@
     }
 }
 
-
 /* ==============================
    FOOTER
    ============================== */
@@ -254,15 +253,70 @@
         text-align: center;
     }
 }
+
 [data-module="hero_front"] {
-    background-color: #FFFBEB;
+    display: grid;
+    grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
+    min-height: 42vw;
+    background-color: #3A3F27;
+    overflow: hidden;
+  
+    .content {
+      align-self: center;
+      padding: 2rem 3vw;
+    }
+  
     .title {
-        color: #6A6948;
+      margin: 0;
+      font-family: "Anaheim", sans-serif;
+      font-weight: 800;
+      font-size: clamp(3rem, 12vw, 12rem);
+      line-height: 1;
+      text-transform: uppercase;
+      color: #999F59;
     }
+  
     .subline {
-        color: #6A6948;
+        margin: 1rem 0 0;
+        font-family: "Just Another Hand", cursive;
+        font-size: clamp(2rem, 6.5vw, 6.5rem); /* grösser als vorher, die Schrift fällt klein aus */
+        letter-spacing: 0.08em;
+        line-height: 1.1;
+        text-align: right;
+        color: #FFFBEB;
+      }
+  
+    .image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
-}
+  
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      min-height: 0;
+  
+      .content {
+        padding: 3rem 1.5rem 2rem;
+      }
+  
+      .title {
+        font-size: clamp(2.5rem, 16vw, 6rem);
+      }
+  
+      .subline {
+        font-size: clamp(1.25rem, 7vw, 2.5rem);
+      }
+  
+      .image {
+        height: 60vw;
+      }
+    }
+  }
+
+
 [data-module="overview_projects"] {
     .projects {
         padding: 40px;
