@@ -332,6 +332,69 @@
     }
 }
 
+[data-module="text"] {
+    background-color: #FFFBEB;
+    padding: clamp(3rem, 8vw, 6rem) 1.5rem;
+  
+    .inner {
+      max-width: 38rem;
+      margin: 0 auto;
+    }
+  
+    .title {
+      margin: 0 0 clamp(1.5rem, 4vw, 3rem);
+      font-family: "Just Another Hand", cursive;
+      font-weight: 400;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: 1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      color: #3A3F27;
+    }
+  
+    .text {
+      font-family: "Anaheim", sans-serif;
+      font-size: clamp(1.125rem, 1.6vw, 1.5rem);
+      line-height: 1.55;
+      text-align: left;
+      color: #000000;
+  
+      > :first-child {
+        margin-top: 0;
+      }
+  
+      > :last-child {
+        margin-bottom: 0;
+      }
+  
+      p {
+        margin: 0 0 1em;
+      }
+  
+      a {
+        color: #3A3F27;
+        text-underline-offset: 0.15em;
+      }
+  
+      ul,
+      ol {
+        margin: 0 0 1em;
+        padding-left: 1.25em;
+      }
+  
+      h2,
+      h3,
+      h4 {
+        margin: 1.5em 0 0.5em;
+        font-family: "Just Another Hand", cursive;
+        font-weight: 400;
+        line-height: 1.1;
+        color: #3A3F27;
+      }
+    }
+  }
+
 /* Styling of all available teaser components. */
 
 /* Styling of utility classes, can be added anywhere in the project. */
