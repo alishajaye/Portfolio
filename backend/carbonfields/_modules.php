@@ -28,8 +28,7 @@ Container::make('post_meta', 'Module')
                 Field::make("text", "title", "Titel"),
                 Field::make("rich_text", "text", "Text")->set_required(),
             ])
-            
-                // -> overview_projects
+            // -> overview_projects
             ->add_fields('overview_projects', 'Übersicht Projekte', [
                 Field::make("text", "title", "Titel")->set_required(),
                 Field::make("association", "selection", "Auswahl Projekte")
@@ -40,6 +39,11 @@ Container::make('post_meta', 'Module')
                         ]
                     ])
             ])
+            // -> images
+            ->add_fields('images', 'Bilder', [
+                Field::make("media_gallery", "images", "Bilder")->set_required(),
+            ])
+
             // todo: add new modules here
             // -> SETTINGS
             ->set_layout('tabbed-vertical')
@@ -63,6 +67,8 @@ function render_modules (): void {
                     return (int) $item["id"];
                 }, $module["selection"]);
                 break;
+            case "images":
+                $module["images"] = array_map("intval", $module["images"]);
                 // todo: add data modifications for modules here as a new case
         }
         // -> Laden des Templates basierend auf dem Modultyp und weitergeben der Daten
