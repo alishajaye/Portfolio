@@ -18,10 +18,15 @@ Container::make('post_meta', 'Module')
                 Field::make("textarea", "subline", "Subline"),
                 Field::make("image", "image", "Bild")->set_required(),
             ])
-            //->hero_default
+            // ->hero_default
             ->add_fields('hero_default', 'Hero Standard', [
                 Field::make('text', 'title', 'Titel')->set_required(),
                 Field::make('textarea', 'subline', 'Subline')->set_required(),
+            ])
+            // -> text
+            ->add_fields('text', 'Text', [
+                Field::make("text", "title", "Titel"),
+                Field::make("rich_text", "text", "Text")->set_required(),
             ])
             
                 // -> overview_projects
