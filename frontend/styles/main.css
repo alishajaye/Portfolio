@@ -316,21 +316,161 @@
     }
   }
 
-
-[data-module="overview_projects"] {
-    .projects {
-        padding: 40px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
-        img{
-            width: 100%;
-            height: 550px;
-            object-fit: cover;
-            overflow: hidden;
-        }
+  [data-module="hero_default"] {
+    min-height: 42vw;
+    padding: clamp(2rem, 6vw, 7rem) 2.5vw 3rem;
+    background-color: #3A3F27;
+  
+    .content {
+      width: fit-content;
+      max-width: 100%;
     }
-}
+  
+    .title {
+      margin: 0;
+      font-family: "Anaheim", sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.5rem, 9vw, 9rem);
+      line-height: 1;
+      text-transform: uppercase;
+      color: #999F59;
+    }
+  
+    .subline {
+      margin: 1rem 0 0 clamp(2rem, 12vw, 10rem);
+      font-family: "Just Another Hand", cursive;
+      font-size: clamp(2rem, 6.5vw, 6.5rem);
+      letter-spacing: 0.08em;
+      line-height: 1.1;
+      text-transform: uppercase;
+      color: #FFFBEB;
+    }
+  
+    @media (max-width: 768px) {
+      min-height: 0;
+      padding: 3rem 1.5rem 2rem;
+  
+      .title {
+        font-size: clamp(2.5rem, 16vw, 6rem);
+      }
+  
+      .subline {
+        margin-left: 1.5rem;
+        font-size: clamp(1.25rem, 7vw, 2.5rem);
+      }
+    }
+  }
+
+
+  [data-module="overview_projects"] {
+    padding: clamp(3rem, 8vw, 7rem) clamp(1.5rem, 3vw, 2.5rem);
+    background-color: #3A3F27;
+  
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-bottom: clamp(2rem, 5vw, 4.5rem);
+    }
+  
+    .title {
+      margin: 0;
+      font-family: "Anaheim", sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.25rem, 6vw, 5.5rem);
+      line-height: 1.05;
+      color: #999F59;
+    }
+  
+    .button {
+      flex-shrink: 0;
+      padding: 0.6em 1.2em;
+      font-family: "Anaheim", sans-serif;
+      font-weight: 800;
+      font-size: clamp(0.95rem, 1.4vw, 1.25rem);
+      text-decoration: none;
+      color: #FFFBEB;
+      background-color: #999F59;
+      transition: background-color 0.2s, color 0.2s;
+  
+      &:hover,
+      &:focus-visible {
+        background-color: #FFFBEB;
+        color: #3A3F27;
+      }
+    }
+  
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1.5rem, 3vw, 3rem);
+    }
+  
+    .project {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+  
+    .media {
+      position: relative;
+  
+      img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+      }
+    }
+  
+    .label {
+      position: absolute;
+      top: 0;
+      left: 1.5rem;
+      padding: 0.6em 1em;
+      font-family: "Anaheim", sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: #FFFBEB;
+      background-color: #3A3F27;
+    }
+  
+    .project-title {
+      margin: 1rem 0 1.5rem;
+      font-family: "Just Another Hand", cursive;
+      font-weight: 400;
+      font-size: clamp(1.75rem, 3vw, 2.75rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      color: #FFFBEB;
+    }
+  
+    .project-text {
+      font-family: "Anaheim", sans-serif;
+      font-size: 1.125rem;
+      line-height: 1.6;
+      color: #FFFBEB;
+    }
+  
+    @media (max-width: 900px) {
+      .projects {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  
+    @media (max-width: 600px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+  
+      .projects {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
 
 [data-module="text"] {
     background-color: #FFFBEB;
@@ -391,6 +531,41 @@
         font-weight: 400;
         line-height: 1.1;
         color: #3A3F27;
+      }
+    }
+  }
+
+  [data-module="images"] {
+    padding: clamp(3rem, 11vw, 8rem) clamp(1.5rem, 16vw, 12rem);
+    background-color: #3A3F27;
+  
+    .images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: clamp(1.5rem, 9vw, 6rem);
+    }
+  
+    .images__item {
+      flex: 0 1 clamp(14rem, 29vw, 22rem);
+  
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+  
+    @media (max-width: 600px) {
+      padding: 3rem 1.5rem;
+  
+      .images {
+        gap: 1.5rem;
+      }
+  
+      .images__item {
+        flex-basis: 100%;
       }
     }
   }
