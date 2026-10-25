@@ -16,3 +16,12 @@ $label = (!empty($terms) && !is_wp_error($terms)) ? $terms[0]->name : '';
   <h3 class="project-title"><?= esc_html($project["title"]) ?></h3>
   <p class="project-text"><?= esc_html($project["description"]) ?></p>
 </a>
+
+<div class="media">
+  <?php if (!empty($project["image"]["src"])) : ?>
+    <img src="<?= esc_url($project["image"]["src"]) ?>" alt="<?= esc_attr($project["image"]["alt"]) ?>">
+  <?php endif; ?>
+  <?php if ($label) : ?>
+    <span class="label"><?= esc_html($label) ?></span>
+  <?php endif; ?>
+</div>

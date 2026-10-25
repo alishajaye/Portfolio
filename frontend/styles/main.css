@@ -11,13 +11,13 @@
     /* fonts */
     --font-body: "Anaheim", sans-serif;
     --font-display: "Amatic SC", cursive;
-  }
+}
 
 /* Styling of all available layout components. */
 /* ==============================
    HEADER
    ============================== */
-   [data-layout="header"] {
+[data-layout="header"] {
     padding: 0 2.2%;
     min-height: 180px;
     box-sizing: border-box;
@@ -36,7 +36,7 @@
         display: flex;
         align-items: center;
         flex-shrink: 0;
-    
+
         .logo {
             display: block;
             width: auto;
@@ -45,25 +45,27 @@
             object-fit: contain;
         }
     }
+
     /* Navigation */
     .site-navigation {
         .nav {
             list-style: none;
             margin: 0;
             padding: 0;
-
             display: flex;
             flex-direction: row;
             justify-content: flex-end;
             align-items: center;
             gap: clamp(24px, 3vw, 60px);
         }
+
         /* Einzelne Menüpunkte */
         .nav-item {
             a {
                 display: inline-flex;
                 align-items: baseline;
                 gap: 8px;
+                padding: 0.15em 0.6em;
                 font-family: var(--font-body);
                 font-size: 25px;
                 font-weight: 400;
@@ -71,23 +73,33 @@
                 color: #000000;
                 text-decoration: none;
                 white-space: nowrap;
-                transition: color 0.2s ease;
+                transition: color 0.2s ease, background-color 0.2s ease;
+
                 &:hover,
                 &:focus-visible {
                     color: var(--color-green);
                 }
+
+                /* aktuelle Seite (muss nach :hover stehen) */
+                &[aria-current="page"] {
+                    background-color: var(--color-dark);
+                    color: var(--color-light);
+                }
             }
+
             /* Nummerierung 01, 02, 03 ... */
             .nav-number {
                 color: var(--color-green);
                 font-weight: 700;
             }
+
             /* Name des Menüpunktes */
             .nav-title {
                 color: inherit;
             }
         }
     }
+
     /* Tastaturfokus für das Logo */
     .site-logo:focus-visible {
         outline: 2px solid var(--color-dark);
@@ -108,11 +120,13 @@
     justify-content: space-between;
     align-items: center;
     gap: 32px;
+
     /* Logo links */
     .footer-logo {
         display: flex;
         align-items: center;
         flex-shrink: 0;
+
         img {
             display: block;
             width: 85px;
@@ -121,6 +135,7 @@
             object-fit: contain;
         }
     }
+
     /* Inhalt rechts */
     .footer-content {
         display: flex;
@@ -129,12 +144,14 @@
         gap: 16px;
         text-align: right;
     }
+
     .footer-copyright {
         margin: 0;
         font-family: var(--font-body);
         font-size: 18px;
         color: #000000;
     }
+
     /* LinkedIn und E-Mail */
     .footer-socials {
         display: flex;
@@ -142,6 +159,7 @@
         align-items: center;
         justify-content: flex-end;
         gap: 18px;
+
         a {
             display: inline-flex;
             align-items: center;
@@ -149,10 +167,12 @@
             color: var(--color-dark);
             text-decoration: none;
             transition: color 0.2s ease;
+
             &:hover,
             &:focus-visible {
                 color: var(--color-green);
             }
+
             img {
                 display: block;
                 width: 28px;
@@ -161,6 +181,7 @@
             }
         }
     }
+
     /* Datenschutz und Impressum */
     .footer-navigation {
         .footer-nav {
@@ -171,12 +192,14 @@
             gap: 8px;
             margin: 0;
             padding: 0;
+
             a {
                 font-family: var(--font-body);
                 font-size: 16px;
                 color: #000000;
                 text-decoration: none;
                 transition: color 0.2s ease;
+
                 &:hover,
                 &:focus-visible {
                     color: var(--color-green);
@@ -184,30 +207,37 @@
             }
         }
     }
+
     .footer-logo:focus-visible {
         outline: 2px solid var(--color-dark);
         outline-offset: 5px;
     }
 }
+
 /* Mobile Darstellung */
 @media (max-width: 600px) {
     [data-layout="footer"] {
         align-items: flex-start;
         gap: 24px;
         padding: 32px 5%;
+
         .footer-content {
             gap: 14px;
         }
+
         .footer-logo img {
             width: 65px;
             max-height: 50px;
         }
+
         .footer-copyright {
             font-size: 16px;
         }
+
         .footer-socials {
             gap: 14px;
         }
+
         .footer-navigation .footer-nav a {
             font-size: 15px;
         }
@@ -220,9 +250,11 @@
     width: 100%;
     height: 100%;
 }
+
 [data-page="project"] {
     background-color: var(--color-green);
     padding: 40px 100px;
+
     .title {
         font-size: 32px;
     }
@@ -234,12 +266,15 @@
     position: relative;
     width: 100%;
 }
+
+/* Hinweis: Das Modul "example" kann gelöscht werden, sobald es nicht mehr gebraucht wird. */
 [data-module="example"] {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+
     & > .image {
         position: absolute;
         width: 100%;
@@ -247,326 +282,362 @@
         object-fit: cover;
         inset: 0;
     }
+
     & > .title {
         position: relative;
         color: white;
-        font: var(--font-h1);
         text-align: center;
     }
 }
 
+/* ------------------------------
+   Hero Startseite
+   ------------------------------ */
 [data-module="hero_front"] {
     display: grid;
     grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
     min-height: 42vw;
     background-color: var(--color-dark);
     overflow: hidden;
-  
+
     .content {
-      align-self: center;
-      padding: 2rem 3vw;
+        align-self: center;
+        padding: 2rem 3vw;
     }
-  
+
     .title {
-      margin: 0;
-      font-family: var(--font-body);
-      font-weight: 800;
-      font-size: clamp(3rem, 12vw, 12rem);
-      line-height: 1;
-      text-transform: uppercase;
-      color: var(--color-green);
+        margin: 0;
+        font-family: var(--font-body);
+        font-weight: 800;
+        font-size: clamp(3rem, 12vw, 12rem);
+        line-height: 1;
+        text-transform: uppercase;
+        color: var(--color-green);
     }
-  
+
     .subline {
         margin: 1rem 0 0;
         font-family: var(--font-display);
-        font-size: clamp(2rem, 6.5vw, 6.5rem); /* grösser als vorher, die Schrift fällt klein aus */
+        font-size: clamp(2rem, 6.5vw, 6.5rem);
         letter-spacing: 0.08em;
         line-height: 1.1;
         text-align: right;
         color: var(--color-light);
-      }
-  
-    .image {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
     }
-  
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-      min-height: 0;
-  
-      .content {
-        padding: 3rem 1.5rem 2rem;
-      }
-  
-      .title {
-        font-size: clamp(2.5rem, 16vw, 6rem);
-      }
-  
-      .subline {
-        font-size: clamp(1.25rem, 7vw, 2.5rem);
-      }
-  
-      .image {
-        height: 60vw;
-      }
-    }
-  }
 
-  [data-module="hero_default"] {
+    .image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        min-height: 0;
+
+        .content {
+            padding: 3rem 1.5rem 2rem;
+        }
+
+        .title {
+            font-size: clamp(2.5rem, 16vw, 6rem);
+        }
+
+        .subline {
+            font-size: clamp(1.25rem, 7vw, 2.5rem);
+        }
+
+        .image {
+            height: 60vw;
+        }
+    }
+}
+
+/* ------------------------------
+   Hero Standard
+   ------------------------------ */
+[data-module="hero_default"] {
     min-height: 42vw;
     padding: clamp(2rem, 6vw, 7rem) 2.5vw 3rem;
     background-color: var(--color-dark);
-  
+
     .content {
-      width: fit-content;
-      max-width: 100%;
+        width: fit-content;
+        max-width: 100%;
     }
-  
+
     .title {
-      margin: 0;
-      font-family: var(--font-body);
-      font-weight: 800;
-      font-size: clamp(2.5rem, 9vw, 9rem);
-      line-height: 1;
-      text-transform: uppercase;
-      color: var(--color-green);
+        margin: 0;
+        font-family: var(--font-body);
+        font-weight: 800;
+        font-size: clamp(2.5rem, 9vw, 9rem);
+        line-height: 1;
+        text-transform: uppercase;
+        color: var(--color-green);
     }
-  
+
     .subline {
-      margin: 1rem 0 0 clamp(2rem, 12vw, 10rem);
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 6.5vw, 6.5rem);
-      letter-spacing: 0.08em;
-      line-height: 1.1;
-      color: var(--color-light);
+        margin: 1rem 0 0 clamp(2rem, 12vw, 10rem);
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 6.5vw, 6.5rem);
+        letter-spacing: 0.08em;
+        line-height: 1.1;
+        color: var(--color-light);
     }
-  
+
     @media (max-width: 768px) {
-      min-height: 0;
-      padding: 3rem 1.5rem 2rem;
-  
-      .title {
-        font-size: clamp(2.5rem, 16vw, 6rem);
-      }
-  
-      .subline {
-        margin-left: 1.5rem;
-        font-size: clamp(1.25rem, 7vw, 2.5rem);
-      }
+        min-height: 0;
+        padding: 3rem 1.5rem 2rem;
+
+        .title {
+            font-size: clamp(2.5rem, 16vw, 6rem);
+        }
+
+        .subline {
+            margin-left: 1.5rem;
+            font-size: clamp(1.25rem, 7vw, 2.5rem);
+        }
     }
-  }
+}
 
-
-  [data-module="overview_projects"] {
+/* ------------------------------
+   Übersicht Projekte (Startseite)
+   und Meine Projekte (Unterseite)
+   ------------------------------ */
+[data-module="overview_projects"],
+[data-module="projects"] {
     padding: clamp(3rem, 8vw, 7rem) clamp(1.5rem, 3vw, 2.5rem);
     background-color: var(--color-dark);
-  
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-      margin-bottom: clamp(2rem, 5vw, 4.5rem);
-    }
-  
-    .title {
-      margin: 0;
-      font-family: var(--font-body);
-      font-weight: 800;
-      font-size: clamp(2.25rem, 6vw, 5.5rem);
-      line-height: 1.05;
-      color: var(--color-green);
-    }
-  
-    .button {
-      flex-shrink: 0;
-      padding: 0.6em 1.2em;
-      font-family: var(--font-body);
-      font-weight: 800;
-      font-size: clamp(0.95rem, 1.4vw, 1.25rem);
-      text-decoration: none;
-      color: var(--color-light);
-      background-color: var(--color-green);
-      transition: background-color 0.2s, color 0.2s;
-  
-      &:hover,
-      &:focus-visible {
-        background-color: var(--color-light);
-        color: var(--color-dark);
-      }
-    }
-  
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: clamp(1.5rem, 3vw, 3rem);
-    }
-  
-    .project {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-  
-    .media {
-      position: relative;
-  
-      img {
-        display: block;
-        width: 100%;
-        aspect-ratio: 4 / 5;
-        object-fit: cover;
-      }
-    }
-  
-    .label {
-      position: absolute;
-      top: 0;
-      left: 1.5rem;
-      padding: 0.6em 1em;
-      font-family: var(--font-body);
-      font-weight: 800;
-      font-size: 1rem;
-      color: var(--color-light);
-      background-color: var(--color-dark);
-    }
-  
-    .project-title {
-      margin: 1rem 0 1.5rem;
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: clamp(1.75rem, 3vw, 2.75rem);
-      letter-spacing: 0.08em;
-      text-align: center;
-      color: var(--color-light);
-    }
-  
-    .project-text {
-      font-family: var(--font-body);
-      font-size: 1.125rem;
-      line-height: 1.6;
-      color: var(--color-light);
-    }
-  
-    @media (max-width: 900px) {
-      .projects {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-  
-    @media (max-width: 600px) {
-      .header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-  
-      .projects {
-        grid-template-columns: 1fr;
-      }
-    }
-  }
 
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        margin-bottom: clamp(2rem, 5vw, 4.5rem);
+    }
+
+    .title {
+        margin: 0;
+        font-family: var(--font-body);
+        font-weight: 800;
+        font-size: clamp(2.25rem, 6vw, 5.5rem);
+        line-height: 1.05;
+        color: var(--color-green);
+    }
+
+    .button {
+        flex-shrink: 0;
+        padding: 0.6em 1.2em;
+        font-family: var(--font-body);
+        font-weight: 800;
+        font-size: clamp(0.95rem, 1.4vw, 1.25rem);
+        text-decoration: none;
+        color: var(--color-light);
+        background-color: var(--color-green);
+        transition: background-color 0.2s, color 0.2s;
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--color-light);
+            color: var(--color-dark);
+        }
+    }
+
+    .projects {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: clamp(1.5rem, 3vw, 3rem);
+    }
+
+    .project {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .media {
+        position: relative;
+        aspect-ratio: 4 / 5;
+        background-color: #D9D9D9;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .label {
+        position: absolute;
+        top: 0;
+        left: 1.5rem;
+        max-width: 50%;
+        padding: 0.6em 1em;
+        font-family: var(--font-body);
+        font-weight: 800;
+        font-size: 1rem;
+        line-height: 1.25;
+        color: var(--color-light);
+        background-color: var(--color-dark);
+    }
+
+    .project-title {
+        margin: 1rem 0 1.5rem;
+        font-family: var(--font-display);
+        font-weight: 400;
+        font-size: clamp(1.75rem, 3vw, 2.75rem);
+        letter-spacing: 0.08em;
+        text-align: center;
+        color: var(--color-light);
+    }
+
+    .project-text {
+        font-family: var(--font-body);
+        font-size: 1.125rem;
+        line-height: 1.6;
+        color: var(--color-light);
+    }
+
+    @media (max-width: 900px) {
+        .projects {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .projects {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+/* Nur Unterseite "Meine Projekte": grösserer Spaltenabstand, kein Beschreibungstext */
+[data-module="projects"] {
+    .projects {
+        column-gap: clamp(1.5rem, 6vw, 6rem);
+        row-gap: clamp(1.5rem, 3.6vw, 3.5rem);
+    }
+
+    .project-title {
+        margin: 0.75rem 0 0;
+    }
+
+    .project-text {
+        display: none;
+    }
+}
+
+/* ------------------------------
+   Text
+   ------------------------------ */
 [data-module="text"] {
     background-color: var(--color-light);
     padding: clamp(3rem, 8vw, 6rem) 1.5rem;
-  
+
     .inner {
-      max-width: 38rem;
-      margin: 0 auto;
+        max-width: 38rem;
+        margin: 0 auto;
     }
-  
+
     .title {
-      margin: 0 0 clamp(1.5rem, 4vw, 3rem);
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: clamp(3rem, 8vw, 6.5rem);
-      line-height: 1;
-      letter-spacing: 0.08em;
-      text-align: center;
-      color: var(--color-dark);
-    }
-  
-    .text {
-      font-family: var(--font-body);
-      font-size: clamp(1.125rem, 1.6vw, 1.5rem);
-      line-height: 1.55;
-      text-align: left;
-      color: #000000;
-  
-      > :first-child {
-        margin-top: 0;
-      }
-  
-      > :last-child {
-        margin-bottom: 0;
-      }
-  
-      p {
-        margin: 0 0 1em;
-      }
-  
-      a {
-        color: var(--color-dark);
-        text-underline-offset: 0.15em;
-      }
-  
-      ul,
-      ol {
-        margin: 0 0 1em;
-        padding-left: 1.25em;
-      }
-  
-      h2,
-      h3,
-      h4 {
-        margin: 1.5em 0 0.5em;
+        margin: 0 0 clamp(1.5rem, 4vw, 3rem);
         font-family: var(--font-display);
         font-weight: 400;
-        line-height: 1.1;
+        font-size: clamp(3rem, 8vw, 6.5rem);
+        line-height: 1;
+        letter-spacing: 0.08em;
+        text-align: center;
         color: var(--color-dark);
-      }
     }
-  }
 
-  [data-module="images"] {
+    .text {
+        font-family: var(--font-body);
+        font-size: clamp(1.125rem, 1.6vw, 1.5rem);
+        line-height: 1.55;
+        text-align: left;
+        color: #000000;
+
+        > :first-child {
+            margin-top: 0;
+        }
+
+        > :last-child {
+            margin-bottom: 0;
+        }
+
+        p {
+            margin: 0 0 1em;
+        }
+
+        a {
+            color: var(--color-dark);
+            text-underline-offset: 0.15em;
+        }
+
+        ul,
+        ol {
+            margin: 0 0 1em;
+            padding-left: 1.25em;
+        }
+
+        h2,
+        h3,
+        h4 {
+            margin: 1.5em 0 0.5em;
+            font-family: var(--font-display);
+            font-weight: 400;
+            line-height: 1.1;
+            color: var(--color-dark);
+        }
+    }
+}
+
+/* ------------------------------
+   Bilder
+   ------------------------------ */
+[data-module="images"] {
     padding: clamp(3rem, 11vw, 8rem) clamp(1.5rem, 16vw, 12rem);
     background-color: var(--color-dark);
-  
+
     .images {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: flex-start;
-      gap: clamp(1.5rem, 9vw, 6rem);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: clamp(1.5rem, 9vw, 6rem);
     }
-  
+
     .images__item {
-      flex: 0 1 clamp(14rem, 29vw, 22rem);
-  
-      img {
-        display: block;
-        width: 100%;
-        height: auto;
-      }
+        flex: 0 1 clamp(14rem, 29vw, 22rem);
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
     }
-  
+
     @media (max-width: 600px) {
-      padding: 3rem 1.5rem;
-  
-      .images {
-        gap: 1.5rem;
-      }
-  
-      .images__item {
-        flex-basis: 100%;
-      }
+        padding: 3rem 1.5rem;
+
+        .images {
+            gap: 1.5rem;
+        }
+
+        .images__item {
+            flex-basis: 100%;
+        }
     }
-  }
+}
 
 /* Styling of all available teaser components. */
 
