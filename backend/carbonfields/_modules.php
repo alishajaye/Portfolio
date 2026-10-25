@@ -43,6 +43,10 @@ Container::make('post_meta', 'Module')
             ->add_fields('images', 'Bilder', [
                 Field::make("media_gallery", "images", "Bilder")->set_required(),
             ])
+            // -> projects
+            ->add_fields('projects', 'Meine Projekte', [
+                Field::make("text", "title", "Titel")->set_required(),
+            ])
 
             // todo: add new modules here
             // -> SETTINGS
@@ -81,3 +85,4 @@ function render_modules (): void {
         );
     }
 }
+
