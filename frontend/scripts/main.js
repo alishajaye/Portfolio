@@ -1,1 +1,1 @@
-console.log('hoi js')
+import "./project-filter.js";

@@ -13,9 +13,9 @@ function get_project_by_id(int $id): array {
 
     // -> load project_category
     $terms = get_the_terms($id, "project_category");
-    $project_categories = (!empty($terms) && !is_wp_error($terms))
-        ? array_map(fn($item) => $item->name, $terms)
-        : [];
+    $terms = (!empty($terms) && !is_wp_error($terms)) ? $terms : [];
+    $project_categories = array_values(array_map(fn($item) => $item->name, $terms));
+    $project_category_slugs = array_values(array_map(fn($item) => $item->slug, $terms));
 
     // -> return data
     return [
@@ -27,6 +27,7 @@ function get_project_by_id(int $id): array {
         "images" => array_map("intval", $images ?: []),
         "project_categories" => $project_categories,
         "link" => $link,
+        "project_category_slugs" => $project_category_slugs,
     ];
 }
 

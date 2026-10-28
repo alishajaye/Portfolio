@@ -598,11 +598,53 @@
     }
 }
 
-/* Nur Unterseite "Meine Projekte": grösserer Spaltenabstand, kein Beschreibungstext */
+/* Nur Unterseite "Meine Projekte": grösserer Spaltenabstand, kein Beschreibungstext, Filter */
 [data-module="projects"] {
+    .header {
+        flex-wrap: wrap;
+    }
+
+    .filter {
+        --filter-gap: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: var(--filter-gap);
+    }
+
+    .filter__break {
+        flex-basis: 100%;
+        height: 0;
+        margin-top: calc(var(--filter-gap) * -1);
+    }
+
+    .filter__button {
+        padding: 0.5em 1.1em;
+        font-family: var(--font-body);
+        font-weight: 800;
+        font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+        color: var(--color-green);
+        background-color: transparent;
+        border: 2px solid var(--color-green);
+        cursor: pointer;
+        transition: background-color 0.2s, color 0.2s;
+
+        &:hover,
+        &:focus-visible,
+        &[aria-pressed="true"] {
+            background-color: var(--color-green);
+            color: var(--color-light);
+        }
+    }
+
     .projects {
         column-gap: clamp(1.5rem, 6vw, 6rem);
         row-gap: clamp(1.5rem, 3.6vw, 3.5rem);
+    }
+
+    /* ausgeblendete Projekte: ohne diese Regel würde display: block das hidden-Attribut überschreiben */
+    .project[hidden] {
+        display: none;
     }
 
     .project-title {
@@ -611,6 +653,12 @@
 
     .project-text {
         display: none;
+    }
+
+    @media (max-width: 600px) {
+        .filter {
+            justify-content: flex-start;
+        }
     }
 }
 
