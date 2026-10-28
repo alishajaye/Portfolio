@@ -7,11 +7,6 @@ Container::make('post_meta', 'Module')
     ->where('post_type', '=', 'page')
     ->add_fields([
         Field::make('complex', 'modules', 'Module')
-            // -> example
-            ->add_fields('example', 'Beispiel', [
-                Field::make('text', 'title', 'Titel')->set_required(),
-                Field::make('image', 'image', 'Bild')->set_required(),
-            ])
             // -> hero_front
             ->add_fields('hero_front', 'Hero Startseite', [
                 Field::make("text", "title", "Titel")->set_required(),

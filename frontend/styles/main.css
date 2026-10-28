@@ -252,11 +252,112 @@
 }
 
 [data-page="project"] {
-    background-color: var(--color-green);
-    padding: 40px 100px;
+    background-color: transparent;
+    padding: 0;
 
+    /* Kopfbereich */
+    .project-hero {
+        padding: clamp(2rem, 6vw, 5rem) 2.7vw clamp(2rem, 6vw, 4.5rem);
+        background-color: var(--color-dark);
+    }
+
+    .category {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 0;
+    }
+
+    .category-item {
+        display: inline-block;
+        padding: 0.7em 1.1em;
+        font-family: var(--font-body);
+        font-weight: 800;
+        font-size: clamp(0.85rem, 1.4vw, 1.25rem);
+        line-height: 1.2;
+        color: var(--color-light);
+        background-color: var(--color-green);
+    }
+
+    /* grosses "Projekt" */
+    .preline {
+        margin: clamp(1rem, 3vw, 2.5rem) 0 0;
+        font-family: var(--font-body);
+        font-weight: 800;
+        font-size: clamp(3rem, 12vw, 11rem);
+        line-height: 1;
+        text-transform: uppercase;
+        color: var(--color-green);
+    }
+
+    /* Projektname */
     .title {
-        font-size: 32px;
+        max-width: 70%;
+        margin: 1.25rem 0 0;
+        font-family: var(--font-display);
+        font-weight: 400;
+        font-size: clamp(1.75rem, 4.5vw, 4rem);
+        letter-spacing: 0.08em;
+        line-height: 1.2;
+        color: var(--color-light);
+    }
+
+    /* Lead und Fliesstext */
+    .project-content {
+        padding: clamp(2.5rem, 7vw, 6rem) 6.5vw;
+        background-color: var(--color-light);
+        font-family: var(--font-body);
+        font-size: clamp(1.125rem, 1.6vw, 1.5rem);
+        line-height: 1.55;
+        color: var(--color-black);
+
+        .lead {
+            max-width: 28rem;
+            margin: 0 0 clamp(1.5rem, 4vw, 3rem);
+        }
+
+        .text {
+            max-width: 60rem;
+
+            > :first-child {
+                margin-top: 0;
+            }
+
+            > :last-child {
+                margin-bottom: 0;
+            }
+
+            p {
+                margin: 0 0 1em;
+            }
+
+            a {
+                color: var(--color-dark);
+                text-underline-offset: 0.15em;
+            }
+
+            ul,
+            ol {
+                margin: 0 0 1em;
+                padding-left: 1.25em;
+            }
+
+            h2,
+            h3,
+            h4 {
+                margin: 1.5em 0 0.5em;
+                font-family: var(--font-display);
+                font-weight: 400;
+                line-height: 1.1;
+                color: var(--color-dark);
+            }
+        }
+    }
+
+    @media (max-width: 600px) {
+        .title {
+            max-width: 100%;
+        }
     }
 }
 
@@ -265,29 +366,6 @@
     overflow: clip;
     position: relative;
     width: 100%;
-}
-
-/* Hinweis: Das Modul "example" kann gelöscht werden, sobald es nicht mehr gebraucht wird. */
-[data-module="example"] {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-
-    & > .image {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        inset: 0;
-    }
-
-    & > .title {
-        position: relative;
-        color: white;
-        text-align: center;
-    }
 }
 
 /* ------------------------------

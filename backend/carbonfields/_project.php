@@ -9,4 +9,6 @@ Container::make('post_meta', 'Projekt')
         Field::make("textarea", "description", "Beschreibung")->set_required()->set_help_text("Wird für den Teaser benötigt"),
         Field::make("textarea", "lead", "Lead")->set_required(),
         Field::make("rich_text", "text", "Text")->set_required(),
+        Field::make("media_gallery", "images", "Bilder")->set_type(["image"]),
     ]);
+    

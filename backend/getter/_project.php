@@ -8,23 +8,28 @@ function get_project_by_id(int $id): array {
     $lead = carbon_get_post_meta($id, "lead");
     $description = carbon_get_post_meta($id, "description");
     $text = carbon_get_post_meta($id, "text");
+    $images = carbon_get_post_meta($id, "images");
     $link = get_permalink($id);
+
     // -> load project_category
     $terms = get_the_terms($id, "project_category");
     $project_categories = (!empty($terms) && !is_wp_error($terms))
         ? array_map(fn($item) => $item->name, $terms)
         : [];
+
     // -> return data
-    return[
+    return [
         "title" => $title,
         "image" => $image,
         "lead" => $lead,
         "description" => $description,
         "text" => $text,
+        "images" => array_map("intval", $images ?: []),
         "project_categories" => $project_categories,
-        "link" => $link, 
+        "link" => $link,
     ];
 }
+
 function get_project_ids(): array {
     return get_posts([
         'post_type'      => 'project',
