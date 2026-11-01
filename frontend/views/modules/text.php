@@ -7,8 +7,7 @@ $data = $args['data'];
     <?php if (!empty($data['title'])) : ?>
       <h2 class="title"><?= esc_html($data['title']) ?></h2>
     <?php endif; ?>
-    <div class="text"><?= wp_kses_post(wpautop($data['text'])) ?></div>
+
+    <div class="text"><?= render_rich_text($data['text']) ?></div>
   </div>
 </section>
-
-<div class="text"><?= render_rich_text($data['text']) ?></div>
