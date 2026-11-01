@@ -53,3 +53,13 @@ function get_menu_by_slug(string $slug): array
     }
     return $items;
 }
+
+function render_rich_text(?string $html): string {
+    global $wp_embed;
+
+    $html = (string) $html;
+    $html = $wp_embed->autoembed($html); // YouTube-/Vimeo-Links in eigener Zeile
+    $html = do_shortcode($html);         // [video], [audio] usw.
+
+    return wpautop($html);
+}

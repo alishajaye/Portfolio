@@ -23,7 +23,7 @@ $project = get_project_by_id(get_the_ID());
     <?php endif; ?>
 
     <?php if (!empty($project["text"])) : ?>
-      <div class="text"><?= wp_kses_post(wpautop($project["text"])) ?></div>
+      <div class="text"><?= render_rich_text($project["text"]) ?></div>
     <?php endif; ?>
   </section>
 

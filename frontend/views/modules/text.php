@@ -10,3 +10,5 @@ $data = $args['data'];
     <div class="text"><?= wp_kses_post(wpautop($data['text'])) ?></div>
   </div>
 </section>
+
+<div class="text"><?= render_rich_text($data['text']) ?></div>

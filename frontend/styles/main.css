@@ -765,6 +765,34 @@
     }
 }
 
+/* Videos aus dem Editor */
+.wp-video {
+    width: 100% !important; /* überschreibt die feste Breite aus dem Shortcode */
+    max-width: 24rem;       /* Hochkant-Videos nicht übergross darstellen */
+    margin: 1.5em 0;
+}
+
+.wp-video video {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.video-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1.5em 0;
+}
+
+.video-row .wp-video {
+    flex: 1 1 10rem;
+    width: auto !important;
+    min-width: 0;
+    max-width: none;
+    margin: 0;
+}
+
 /* Styling of all available teaser components. */
 
 /* Styling of utility classes, can be added anywhere in the project. */
