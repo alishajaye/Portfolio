@@ -23,7 +23,10 @@ iframe {
 /* ==============================
    HEADER
    ============================== */
-[data-layout="header"] {
+/* ==============================
+   HEADER
+   ============================== */
+   [data-layout="header"] {
     padding: 0 2.2%;
     min-height: 180px;
     box-sizing: border-box;
@@ -50,6 +53,11 @@ iframe {
             max-height: 65px;
             object-fit: contain;
         }
+    }
+
+    /* Hamburger-Button: auf dem Desktop ausgeblendet */
+    .nav-toggle {
+        display: none;
     }
 
     /* Navigation */
@@ -112,55 +120,98 @@ iframe {
         outline-offset: 5px;
     }
 
-        /* Tablet */
-        @media (max-width: 900px) {
-            min-height: 120px;
-            gap: 16px;
-    
-            .site-logo .logo {
-                max-width: 64px;
-                max-height: 52px;
-            }
-    
-            .site-navigation .nav {
-                gap: clamp(8px, 2vw, 24px);
-            }
-    
-            .site-navigation .nav-item a {
-                font-size: 20px;
-                padding: 0.15em 0.4em;
-            }
+    /* etwas kompakter, bevor das Hamburger-Menü übernimmt */
+    @media (max-width: 1200px) {
+        .site-navigation .nav {
+            gap: clamp(12px, 2vw, 32px);
         }
-    
-        /* Handy: Logo oben, Menü darunter */
-        @media (max-width: 640px) {
+
+        .site-navigation .nav-item a {
+            font-size: 22px;
+        }
+    }
+
+    /* Tablet und Handy: Hamburger-Menü */
+    @media (max-width: 1024px) {
+        min-height: 0;
+        padding: 12px 5%;
+        gap: 16px;
+
+        .site-logo .logo {
+            max-width: 64px;
+            max-height: 52px;
+        }
+
+        .nav-toggle {
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            width: 48px;
+            height: 48px;
+            padding: 10px;
+            background: none;
+            border: 0;
+            cursor: pointer;
+        }
+
+        .nav-toggle:focus-visible {
+            outline: 2px solid var(--color-dark);
+            outline-offset: 2px;
+        }
+
+        .nav-toggle__bar {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--color-dark);
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        /* Hamburger wird zum X */
+        &.is-open .nav-toggle__bar:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        &.is-open .nav-toggle__bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        &.is-open .nav-toggle__bar:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* Menü als aufklappbares Feld unter dem Header */
+        .site-navigation {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+            padding: 8px 5% 20px;
+            background-color: var(--color-light);
+            border-top: 1px solid rgba(58, 63, 39, 0.15);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        &.is-open .site-navigation {
+            display: block;
+        }
+
+        .site-navigation .nav {
             flex-direction: column;
             align-items: flex-start;
-            justify-content: center;
-            min-height: 0;
-            padding: 12px 5%;
-            gap: 8px;
-    
-            .site-logo .logo {
-                max-width: 56px;
-                max-height: 44px;
-            }
-    
-            .site-navigation {
-                width: 100%;
-            }
-    
-            .site-navigation .nav {
-                justify-content: space-between;
-                gap: 4px;
-            }
-    
-            .site-navigation .nav-item a {
-                gap: 4px;
-                padding: 0.15em 0.3em;
-                font-size: clamp(15px, 4.4vw, 20px);
-            }
+            justify-content: flex-start;
+            gap: 4px;
         }
+
+        .site-navigation .nav-item a {
+            padding: 0.3em 0.5em;
+            font-size: 24px;
+        }
+    }
 }
 
 /* ==============================
