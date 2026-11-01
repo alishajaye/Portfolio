@@ -13,6 +13,12 @@
     --font-display: "Amatic SC", cursive;
 }
 
+img,
+video,
+iframe {
+    max-width: 100%;
+}
+
 /* Styling of all available layout components. */
 /* ==============================
    HEADER
@@ -105,6 +111,56 @@
         outline: 2px solid var(--color-dark);
         outline-offset: 5px;
     }
+
+        /* Tablet */
+        @media (max-width: 900px) {
+            min-height: 120px;
+            gap: 16px;
+    
+            .site-logo .logo {
+                max-width: 64px;
+                max-height: 52px;
+            }
+    
+            .site-navigation .nav {
+                gap: clamp(8px, 2vw, 24px);
+            }
+    
+            .site-navigation .nav-item a {
+                font-size: 20px;
+                padding: 0.15em 0.4em;
+            }
+        }
+    
+        /* Handy: Logo oben, Menü darunter */
+        @media (max-width: 640px) {
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            min-height: 0;
+            padding: 12px 5%;
+            gap: 8px;
+    
+            .site-logo .logo {
+                max-width: 56px;
+                max-height: 44px;
+            }
+    
+            .site-navigation {
+                width: 100%;
+            }
+    
+            .site-navigation .nav {
+                justify-content: space-between;
+                gap: 4px;
+            }
+    
+            .site-navigation .nav-item a {
+                gap: 4px;
+                padding: 0.15em 0.3em;
+                font-size: clamp(15px, 4.4vw, 20px);
+            }
+        }
 }
 
 /* ==============================
@@ -387,7 +443,7 @@
         margin: 0;
         font-family: var(--font-body);
         font-weight: 800;
-        font-size: clamp(3rem, 12vw, 12rem);
+        font-size: clamp(2.5rem, 11vw, 11rem);
         line-height: 1;
         text-transform: uppercase;
         color: var(--color-green);
@@ -420,7 +476,7 @@
         }
 
         .title {
-            font-size: clamp(2.5rem, 16vw, 6rem);
+            font-size: clamp(2.5rem, 15vw, 6rem);
         }
 
         .subline {
@@ -428,10 +484,14 @@
         }
 
         .image {
-            height: 60vw;
+            height: auto;
+            aspect-ratio: 3 / 4;
+            max-height: 85vh;
+            object-position: 50% 25%;
         }
     }
 }
+
 
 /* ------------------------------
    Hero Standard
@@ -824,6 +884,17 @@
     min-width: 0;
     max-width: none;
     margin: 0;
+}
+
+/* Eingebettete Videos (YouTube) im Text */
+.text iframe {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin: 1.5em 0;
+    border: 0;
 }
 
 /* Styling of all available teaser components. */
