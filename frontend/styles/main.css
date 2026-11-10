@@ -23,10 +23,7 @@ iframe {
 /* ==============================
    HEADER
    ============================== */
-/* ==============================
-   HEADER
-   ============================== */
-   [data-layout="header"] {
+[data-layout="header"] {
     padding: 0 2.2%;
     min-height: 180px;
     box-sizing: border-box;
@@ -351,7 +348,6 @@ iframe {
     }
 }
 
-
 /* Styling of all available page components. */
 [data-page] {
     width: 100%;
@@ -364,7 +360,7 @@ iframe {
 
     /* Kopfbereich */
     .project-hero {
-        position: relative; /* Wichtig, damit sich der absolute Button hier ausrichtet */
+        position: relative;
         padding: clamp(2rem, 6vw, 5rem) 2.7vw clamp(2rem, 6vw, 4.5rem);
         background-color: var(--color-dark);
 
@@ -445,9 +441,9 @@ iframe {
         color: var(--color-black);
 
         .lead {
-            max-width: 60rem; /* Anpassung: Begrenzung gelockert für normale Zeilen */
+            max-width: 60rem;
             margin: 0 0 clamp(1.5rem, 4vw, 3rem);
-            font-style: italic; /* Neu: Macht den Lead-Text kursiv */
+            font-style: italic;
         }
 
         .text {
@@ -570,11 +566,10 @@ iframe {
     }
 }
 
-
 /* ------------------------------
    Hero Standard
    ------------------------------ */
-   [data-module="hero_default"] {
+[data-module="hero_default"] {
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -712,10 +707,6 @@ iframe {
         gap: clamp(1.5rem, 3vw, 3rem);
     }
 
-    .media {
-        aspect-ratio: 5 / 4;
-    }
-
     .project {
         display: block;
         text-decoration: none;
@@ -782,7 +773,6 @@ iframe {
             grid-template-columns: 1fr;
         }
     }
-
 }
 
 /* Nur Startseite ("Highlights"): kompakterer Abstand, kleinere Bilder */
@@ -875,26 +865,13 @@ iframe {
             margin-left: 0;
         }
     }
-}
-    /* ausgeblendete Projekte: ohne diese Regel würde display: block das hidden-Attribut überschreiben */
-    .project[hidden] {
-        display: none;
-    }
-
-    .project-title {
-        margin: 0.75rem 0 0;
-    }
-
-    .project-text {
-        display: none;
-    }
 
     @media (max-width: 600px) {
         .filter {
             justify-content: flex-start;
         }
     }
-
+}
 
 /* ------------------------------
    Text
@@ -1027,78 +1004,43 @@ iframe {
     margin: 0;
 }
 
-/* Eingebettete Videos (YouTube) im Text */
-.text iframe {
+/* --------------------------------------------------
+   Korrektur für Embeds und Abstände (Podcast / Text)
+   -------------------------------------------------- */
+
+.text iframe,
+.wp-block-embed iframe,
+iframe {
     display: block;
     width: 100%;
     max-width: 100%;
     height: auto;
-    aspect-ratio: 16 / 9;
-    margin: 1.5em 0;
+    aspect-ratio: 16 / 9; /* Standard für YouTube etc. */
     border: 0;
+    max-height: 152px !important; /* Hält Spotify kompakt */
+    margin: 0.5em 0 !important;
 }
 
-/* Seite "Projekte": kleinere Bilder */
-[data-module="projects"] .projects .media {
-    aspect-ratio: 1 / 1;
-}
-
-/* Styling of all available teaser components. */
-
-/* Styling of utility classes, can be added anywhere in the project. */
-
-/* BREAKPOINT: 3xl */
-@media (max-width: 1514px) {}
-
-/* BREAKPOINT: xl */
-@media (max-width: 1280px) {}
-
-/* BREAKPOINT: lg */
-@media (max-width: 1024px) {}
-
-/* BREAKPOINT: md */
-@media (max-width: 768px) {}
-
-/* BREAKPOINT: sm */
-@media (max-width: 640px) {}
-
-/* BREAKPOINT: xs */
-@media (max-width: 425px) {}
-
-/* BREAKPOINT: xxs */
-@media (max-width: 400px) {}
-
-/* --------------------------------------------------
-   Korrektur für zu große Abstände bei Podcasts / Embeds
-   -------------------------------------------------- */
-
-/* 1. Spotify- und andere iframes kompakter machen */
-[data-page="project"] .text iframe,
-[data-module="text"] .text iframe,
-.wp-block-embed iframe,
-iframe {
-    max-height: 152px !important; /* Reduziert die riesige Standardhöhe von Spotify-Playern */
-    margin: 0.5em 0 !important;   /* Verringert den Abstand vor und nach dem Player */
-}
-
-/* Falls WordPress einen eigenen Embed-Container nutzt */
 .wp-block-embed {
     margin-bottom: 1rem !important;
     margin-top: 1rem !important;
 }
 
-/* 2. Allgemeine Absatzabstände im Fliesstext etwas straffen */
 [data-page="project"] .text p,
 [data-module="text"] .text p {
-    margin: 0 0 0.6em; /* Standard war 1em, jetzt etwas enger */
+    margin: 0 0 0.6em;
 }
 
-/* 3. Überschriften-Abstände (z.B. vor "Meine Aufgaben") anpassen */
 [data-page="project"] .text h2,
 [data-page="project"] .text h3,
 [data-page="project"] .text h4,
 [data-module="text"] .text h2,
 [data-module="text"] .text h3,
 [data-module="text"] .text h4 {
-    margin: 1em 0 0.3em; /* Oben und unten kompakter */
+    margin: 1em 0 0.3em;
+}
+
+/* Seite "Projekte": kleinere Bilder */
+[data-module="projects"] .projects .media {
+    aspect-ratio: 1 / 1;
 }
