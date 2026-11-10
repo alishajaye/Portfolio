@@ -445,8 +445,9 @@ iframe {
         color: var(--color-black);
 
         .lead {
-            max-width: 28rem;
+            max-width: 60rem; /* Anpassung: Begrenzung gelockert für normale Zeilen */
             margin: 0 0 clamp(1.5rem, 4vw, 3rem);
+            font-style: italic; /* Neu: Macht den Lead-Text kursiv */
         }
 
         .text {
