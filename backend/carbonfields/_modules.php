@@ -17,6 +17,8 @@ Container::make('post_meta', 'Module')
             ->add_fields('hero_default', 'Hero Standard', [
                 Field::make('text', 'title', 'Titel')->set_required(),
                 Field::make('textarea', 'subline', 'Subline'),
+                Field::make('text', 'button_label', 'Button-Text (optional)'),
+                Field::make('file', 'button_file', 'Button-Datei (optional)'),
             ])
             // -> text
             ->add_fields('text', 'Text', [

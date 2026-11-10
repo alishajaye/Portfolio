@@ -547,9 +547,15 @@ iframe {
 /* ------------------------------
    Hero Standard
    ------------------------------ */
-[data-module="hero_default"] {
-    min-height: 42vw;
-    padding: clamp(2rem, 6vw, 7rem) 2.5vw 3rem;
+   [data-module="hero_default"] {
+    position: relative; /* Grundvoraussetzung für absolute Positionierung */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    min-height: 0;
+    padding: clamp(3rem, 6vw, 6rem) 2.5vw clamp(3rem, 12vw, 12rem);
     background-color: var(--color-dark);
 
     .content {
@@ -568,7 +574,7 @@ iframe {
     }
 
     .subline {
-        margin: 1rem 0 0 clamp(2rem, 12vw, 10rem);
+        margin: clamp(1.25rem, 2.5vw, 2.5rem) 0 0 clamp(2rem, 12vw, 10rem);
         font-family: var(--font-display);
         font-size: clamp(2rem, 6.5vw, 6.5rem);
         letter-spacing: 0.08em;
@@ -576,9 +582,34 @@ iframe {
         color: var(--color-light);
     }
 
+    .button {
+        position: absolute;
+        right: 2.5vw;
+        bottom: clamp(3rem, 5vw, 6rem);
+        margin-top: 0;
+        padding: 0.7em 1.6em;
+        font-family: var(--font-body);
+        font-weight: 600;
+        font-size: clamp(0.95rem, 1.4vw, 1.25rem);
+        text-decoration: none;
+        color: var(--color-light);
+        background-color: transparent;
+        border: 1px solid var(--color-light);
+        border-radius: 50px;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--color-green);
+            color: var(--color-dark);
+            border-color: var(--color-green);
+            transform: translateY(-2px);
+        }
+    }
+
     @media (max-width: 768px) {
         min-height: 0;
-        padding: 3rem 1.5rem 2rem;
+        padding: 3rem 1.5rem 5rem; /* Unten etwas mehr Platz für den Button lassen */
 
         .title {
             font-size: clamp(2.5rem, 16vw, 6rem);
@@ -587,6 +618,11 @@ iframe {
         .subline {
             margin-left: 1.5rem;
             font-size: clamp(1.25rem, 7vw, 2.5rem);
+        }
+
+        .button {
+            right: 1.5rem;
+            bottom: 1.5rem;
         }
     }
 }
@@ -639,6 +675,10 @@ iframe {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: clamp(1.5rem, 3vw, 3rem);
+    }
+
+    .media {
+        aspect-ratio: 5 / 4;
     }
 
     .project {
@@ -706,6 +746,21 @@ iframe {
         .projects {
             grid-template-columns: 1fr;
         }
+    }
+
+}
+
+/* Nur Startseite ("Highlights"): kompakterer Abstand, kleinere Bilder */
+[data-module="overview_projects"] {
+    padding-top: clamp(1.5rem, 3vw, 3rem);
+    padding-bottom: clamp(0.75rem, 1.5vw, 1.5rem);
+
+    .header {
+        margin-bottom: clamp(1rem, 2.5vw, 2rem);
+    }
+
+    .media {
+        aspect-ratio: 1 / 1;
     }
 }
 
@@ -946,6 +1001,11 @@ iframe {
     aspect-ratio: 16 / 9;
     margin: 1.5em 0;
     border: 0;
+}
+
+/* Seite "Projekte": kleinere Bilder */
+[data-module="projects"] .projects .media {
+    aspect-ratio: 1 / 1;
 }
 
 /* Styling of all available teaser components. */
