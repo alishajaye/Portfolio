@@ -1035,6 +1035,7 @@ iframe {
    Korrektur für Embeds und Abstände (Podcast / Text)
    -------------------------------------------------- */
 
+/* Normale iframes (z.B. YouTube) im regulären 16:9 Format */
 .text iframe,
 .wp-block-embed iframe,
 iframe {
@@ -1042,9 +1043,15 @@ iframe {
     width: 100%;
     max-width: 100%;
     height: auto;
-    aspect-ratio: 16 / 9; /* Standard für YouTube etc. */
+    aspect-ratio: 16 / 9;
     border: 0;
-    max-height: 152px !important; /* Hält Spotify kompakt */
+    margin: 1.5em 0;
+}
+
+/* Nur Spotify-Player gezielt kompakt halten (greift über die URL) */
+iframe[src*="spotify.com"],
+.wp-block-embed-spotify iframe {
+    max-height: 152px !important;
     margin: 0.5em 0 !important;
 }
 
