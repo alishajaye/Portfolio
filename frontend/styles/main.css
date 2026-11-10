@@ -947,28 +947,33 @@ iframe {
    /* ------------------------------
    Bilder (Flexbox: max. 3 nebeneinander, mittig, mittelgrösse)
    ------------------------------ */
-[data-module="images"] {
+/* ------------------------------
+   Bilder (3 Spalten, ohne Verzerrung)
+   ------------------------------ */
+   [data-module="images"] {
     padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 6vw, 6rem);
     background-color: var(--color-dark);
 
     .images {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center; /* Zentriert die Bilder automatisch bei weniger als 3 Stück */
+        justify-content: center;
+        align-items: center;
         gap: clamp(1.5rem, 3vw, 3rem);
     }
 
     .images__item {
-        /* Berechnet genau 3 Spalten im Desktop-Modus */
         flex: 0 1 calc((100% - (clamp(1.5rem, 3vw, 3rem) * 2)) / 3);
         display: flex;
         justify-content: center;
 
         img {
             display: block;
-            width: 100%;
-            max-width: 350px; /* Perfekte Mittelgrösse (kannst du z.B. auf 320px oder 380px anpassen) */
-            height: auto;
+            max-width: 100%;
+            max-height: 450px; /* Begrenzt die maximale Höhe, damit Hochkant-Bilder nicht riesig werden */
+            width: auto;       /* Passt die Breite automatisch proportional an */
+            height: auto;      /* Verhindert jegliche Verzerrung */
+            object-fit: contain;
         }
     }
 
@@ -976,10 +981,6 @@ iframe {
     @media (max-width: 900px) {
         .images__item {
             flex: 0 1 calc((100% - clamp(1.5rem, 3vw, 3rem)) / 2);
-            
-            img {
-                max-width: 400px; /* Auf Tablets dürfen sie etwas breiter sein */
-            }
         }
     }
 
@@ -996,7 +997,8 @@ iframe {
         }
 
         .images__item img {
-            max-width: 100%;
+            max-height: none;
+            width: 100%;
         }
     }
 }
