@@ -4,7 +4,7 @@
 /* Definition of base styles. */
 :root {
     /* colors */
-    --color-dark: #3A3F27;
+    --color-dark: #323b10;
     --color-green: #999F59;
     --color-light: #FFFBEB;
     --color-black: #000000;
@@ -1067,3 +1067,38 @@ iframe {
 
 /* BREAKPOINT: xxs */
 @media (max-width: 400px) {}
+
+/* --------------------------------------------------
+   Korrektur für zu große Abstände bei Podcasts / Embeds
+   -------------------------------------------------- */
+
+/* 1. Spotify- und andere iframes kompakter machen */
+[data-page="project"] .text iframe,
+[data-module="text"] .text iframe,
+.wp-block-embed iframe,
+iframe {
+    max-height: 152px !important; /* Reduziert die riesige Standardhöhe von Spotify-Playern */
+    margin: 0.5em 0 !important;   /* Verringert den Abstand vor und nach dem Player */
+}
+
+/* Falls WordPress einen eigenen Embed-Container nutzt */
+.wp-block-embed {
+    margin-bottom: 1rem !important;
+    margin-top: 1rem !important;
+}
+
+/* 2. Allgemeine Absatzabstände im Fliesstext etwas straffen */
+[data-page="project"] .text p,
+[data-module="text"] .text p {
+    margin: 0 0 0.6em; /* Standard war 1em, jetzt etwas enger */
+}
+
+/* 3. Überschriften-Abstände (z.B. vor "Meine Aufgaben") anpassen */
+[data-page="project"] .text h2,
+[data-page="project"] .text h3,
+[data-page="project"] .text h4,
+[data-module="text"] .text h2,
+[data-module="text"] .text h3,
+[data-module="text"] .text h4 {
+    margin: 1em 0 0.3em; /* Oben und unten kompakter */
+}
